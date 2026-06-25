@@ -1,0 +1,6 @@
+'''
+to visualize each dataset try ase gui 'dataset name'
+
+exp:
+
+ase gui training_set.extxyz
