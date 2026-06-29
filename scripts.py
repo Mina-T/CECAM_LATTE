@@ -47,7 +47,8 @@ def convert_multiple_json_to_extxyz(examples_dir, output_name):
     print(f"Total example files: {len(example_files)}")
 
 
-def Force_MAE(_file):
+def Force_MAE(epoch):
+    _file = f'epoch_{epoch}_step_{100*epoch}_forces.dat'
     df = read_dat(_file)
     Ex = abs(df['fx_nn'] - df['fx_ref'])
     Ey = abs(df['fy_nn'] - df['fy_ref'])
@@ -56,7 +57,8 @@ def Force_MAE(_file):
     mae = Err_tot /(len(df)*3)
     return mae
 
-def Energy_MAE(_file):
+def Energy_MAE(epoch):
+    _file = f'epoch_{epoch}_step_{100*epoch}.dat'
     df = read_dat(_file)
     mae = abs((df['e_ref']/df['n_atoms']) - (df['e_nn']/df['n_atoms']))
     mae = sum(mae)/len(mae)
@@ -96,7 +98,7 @@ def read_dat(path, _file):
 
 
 def plot_training(training_path, axs=None, label=None, color=None, factor=1, validation=True, train=True):
-    df = read_metrics(training_path,)
+    df = read_metrics(training_path)
     if axs is None:
         raise ValueError("axs must be provided (list/array of 2 axes)")
 
