@@ -2,6 +2,7 @@ import json
 import glob
 import os
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from random import randint
 
@@ -47,9 +48,9 @@ def convert_multiple_json_to_extxyz(examples_dir, output_name):
     print(f"Total example files: {len(example_files)}")
 
 
-def Force_MAE(epoch):
+def Force_MAE(path, epoch):
     _file = f'epoch_{epoch}_step_{100*epoch}_forces.dat'
-    df = read_dat(_file)
+    df = read_dat(path, _file)
     Ex = abs(df['fx_nn'] - df['fx_ref'])
     Ey = abs(df['fy_nn'] - df['fy_ref'])
     Ez = abs(df['fz_nn'] - df['fz_ref'])
@@ -57,9 +58,9 @@ def Force_MAE(epoch):
     mae = Err_tot /(len(df)*3)
     return mae
 
-def Energy_MAE(epoch):
+def Energy_MAE(path,epoch):
     _file = f'epoch_{epoch}_step_{100*epoch}.dat'
-    df = read_dat(_file)
+    df = read_dat(path, _file)
     mae = abs((df['e_ref']/df['n_atoms']) - (df['e_nn']/df['n_atoms']))
     mae = sum(mae)/len(mae)
     return mae
@@ -132,8 +133,8 @@ def plot_training(training_path, axs=None, label=None, color=None, factor=1, val
 
 
 def plot_setup(fig, axs, log=True, lim=True,
-               x0lim=10, xlim=1000,
-               y0lim=0.0, ylim=0.3, fylim=0.55,
+               x0lim=10, xlim=100,
+               y0lim=0.0, ylim=0.1, fylim=0.2,
                title=None):
 
     axs[0].set_title('Energy', fontsize=18)
@@ -177,70 +178,70 @@ def plot_setup(fig, axs, log=True, lim=True,
 
 
 
-p = '/leonardo/pudb/userexternal/mtaleblo/Carbon_trainings/1_similar_dataset/ID_test/'
-f = 'epoch_250_step_250000_forces.dat'
-df = read_dat(p, f)
-mae = F_MAE(df)
-print(mae)
+# p = '/leonardo/pudb/userexternal/mtaleblo/Carbon_trainings/1_similar_dataset/ID_test/'
+# f = 'epoch_250_step_250000_forces.dat'
+# df = read_dat(p, f)
+# mae = F_MAE(df)
+# print(mae)
 
 
 
-p = '/leonardo/pub/userexternal/mtaleblo/Carbon_trainings'
-dirs = ['dia_100','div_100','dia_1k', 'div_1k', 'dia_5k', 'div_5k'][2:4]
-fig, axs = plt.subplots(1, 2, figsize = (15, 5))
-for dir in dirs:
-    plot_df(read_metrics(os.path.join(p , dir , 'training')), axs, dir, validation = True, train = True)
-plot_setup(fig, axs, lim= True)
+# p = '/leonardo/pub/userexternal/mtaleblo/Carbon_trainings'
+# dirs = ['dia_100','div_100','dia_1k', 'div_1k', 'dia_5k', 'div_5k'][2:4]
+# fig, axs = plt.subplots(1, 2, figsize = (15, 5))
+# for dir in dirs:
+#     plot_df(read_metrics(os.path.join(p , dir , 'training')), axs, dir, validation = True, train = True)
+# plot_setup(fig, axs, lim= True)
 
 
 
 
-p = '/leonardo/pub/userexternal/mtaleblo/Carbon_trainings/'
+# p = '/leonardo/pub/userexternal/mtaleblo/Carbon_trainings/'
 
-x = [100, 1000, 5000]
-dia_dirs = ['dia_100', 'dia_1k', 'dia_5k']
-dia_epochs = [150, 250, 1000]
-dia_dia_errors = []
-dia_div_errors = []
+# x = [100, 1000, 5000]
+# dia_dirs = ['dia_100', 'dia_1k', 'dia_5k']
+# dia_epochs = [150, 250, 1000]
+# dia_dia_errors = []
+# dia_div_errors = []
 
-for d, e in zip(dia_dirs, dia_epochs):
-    path_aa = os.path.join(p, d, 'test_dia')
-    aa = F_MAE(path_aa, f'epoch_{e}_step_{e*1000}_forces.dat')
-    dia_dia_errors.append(aa)
-    path_av = os.path.join(p, d, 'test_div')
-    av = F_MAE(path_av, f'epoch_{e}_step_{e*1000}_forces.dat')
-    dia_div_errors.append(av)
+# for d, e in zip(dia_dirs, dia_epochs):
+#     path_aa = os.path.join(p, d, 'test_dia')
+#     aa = F_MAE(path_aa, f'epoch_{e}_step_{e*1000}_forces.dat')
+#     dia_dia_errors.append(aa)
+#     path_av = os.path.join(p, d, 'test_div')
+#     av = F_MAE(path_av, f'epoch_{e}_step_{e*1000}_forces.dat')
+#     dia_div_errors.append(av)
 
-div_dirs = ['div_100', 'div_1k', 'div_5k']
-div_epochs = [50, 50, 1000]
-div_div_errors = []
-div_dia_errors = []
-
-
-for dv, ev in zip(div_dirs, div_epochs):
-    path_vv = os.path.join(p, dv, 'test_div')
-    vv = F_MAE(path_vv, f'epoch_{ev}_step_{ev*1000}_forces.dat')
-    div_div_errors.append(aa)
-    path_va = os.path.join(p, dv, 'test_dia')
-    va = F_MAE(path_va, f'epoch_{ev}_step_{ev*1000}_forces.dat')
-    div_dia_errors.append(av)
+# div_dirs = ['div_100', 'div_1k', 'div_5k']
+# div_epochs = [50, 50, 1000]
+# div_div_errors = []
+# div_dia_errors = []
 
 
-fig, axs = plt.subplots(1, 2, figsize = (12, 4))
-axs[0].plot(x, dia_dia_errors, '*b', markersize = 12, label = 'tested on diamond')
-axs[0].plot(x, dia_div_errors, '*r', markersize = 12, label = 'tested on diverse')
-axs[1].plot(x, div_div_errors, '*b', markersize = 12, label = 'diamond')
-axs[1].plot(x, div_dia_errors, '*r', markersize = 12, label = 'diverse')
-axs[0].set_title('Trained on Diamond data')
-axs[1].set_title('Trained on Diverse data')
-axs[0].set_xlabel('Training set size')
-axs[0].set_ylabel('MAE (eV/ A)')
-axs[1].set_xlabel('Training set size')
-axs[0].legend()
-axs[0].set_xscale('log')
-axs[0].set_yscale('log')
-axs[0].grid()
-plt.show()
+# for dv, ev in zip(div_dirs, div_epochs):
+#     path_vv = os.path.join(p, dv, 'test_div')
+#     vv = F_MAE(path_vv, f'epoch_{ev}_step_{ev*1000}_forces.dat')
+#     div_div_errors.append(aa)
+#     path_va = os.path.join(p, dv, 'test_dia')
+#     va = F_MAE(path_va, f'epoch_{ev}_step_{ev*1000}_forces.dat')
+#     div_dia_errors.append(av)
+
+
+# fig, axs = plt.subplots(1, 2, figsize = (12, 4))
+# axs[0].plot(x, dia_dia_errors, '*b', markersize = 12, label = 'tested on diamond')
+# axs[0].plot(x, dia_div_errors, '*r', markersize = 12, label = 'tested on diverse')
+# axs[1].plot(x, div_div_errors, '*b', markersize = 12, label = 'diamond')
+# axs[1].plot(x, div_dia_errors, '*r', markersize = 12, label = 'diverse')
+# axs[0].set_title('Trained on Diamond data')
+# axs[1].set_title('Trained on Diverse data')
+# axs[0].set_xlabel('Training set size')
+# axs[0].set_ylabel('MAE (eV/ A)')
+# axs[1].set_xlabel('Training set size')
+# axs[0].legend()
+# axs[0].set_xscale('log')
+# axs[0].set_yscale('log')
+# axs[0].grid()
+# plt.show()
 
 
 
