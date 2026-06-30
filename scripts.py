@@ -133,8 +133,8 @@ def plot_training(training_path, axs=None, label=None, color=None, factor=1, val
 
 
 def plot_setup(fig, axs, log=True, lim=True,
-               x0lim=10, xlim=100,
-               y0lim=0.0, ylim=0.1, fylim=0.2,
+               xlim=100,
+               ylim=0.1, fylim=0.2,
                title=None):
 
     axs[0].set_title('Energy', fontsize=18)
@@ -145,15 +145,15 @@ def plot_setup(fig, axs, log=True, lim=True,
     fig.supxlabel('Epochs (log scale, 1000 steps each)')
 
     if lim:
-        axs[0].set(xlim=(x0lim, xlim), ylim=(y0lim, ylim))
-        axs[1].set(xlim=(x0lim, xlim), ylim=(y0lim, fylim))
+        axs[0].set(xlim=(1, xlim), ylim=(0, ylim))
+        axs[1].set(xlim=(1, xlim), ylim=(0, fylim))
 
     if log:
         for ax in axs:
             ax.set_xscale('log')
 
-    axs[0].set_yticks(np.arange(0, ylim, 0.005), minor=True)
-    axs[1].set_yticks(np.arange(0, fylim, 0.005), minor=True)
+    axs[0].set_yticks(np.arange(1, ylim, 0.005), minor=True)
+    axs[1].set_yticks(np.arange(1, fylim, 0.005), minor=True)
 
     for ax in axs:
         ax.grid(which='major', axis='y', alpha=0.7)
