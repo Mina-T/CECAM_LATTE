@@ -26,9 +26,9 @@ greenlet==3.0.3
 h5py==3.10.0
 idna==3.6
 importlib_resources==6.3.1
-jax==0.4.25
+jax
 jax-md==0.2.8
-jaxlib==0.4.25+cuda12.cudnn89
+jaxlib
 jmp==0.0.4
 jraph==0.0.6.dev0
 keras==3.0.5

@@ -1,0 +1,10 @@
+numpy
+mendeleev
+scipy
+tensorflow>=2
+jax
+dm-haiku
+optax
+ase
+pandas
+matplotlib

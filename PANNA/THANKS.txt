@@ -1,0 +1,30 @@
+(To be continued)
+
+FUNDING AGENCIES:
+EU - Horizon 2020 - grant No. 676531 (project E-CAM)
+--
+SISSA & CNR support:
+Stefano de Gironcoli
+Layla Martin-Samos
+--
+MIT-FVG support:
+Alexie Kolpak
+Asegun Henry
+Spencer Wyant
+--
+HARVARD support:
+Efthimios Kaxiras
+--
+ANI-1 dataset permission:
+Olexandr Isayev
+--
+KIM-API support
+Ryan S. Elliott
+Daniel Karls
+--
+Testing & feedback:
+Duc-Long Nguyen, Academia Sinica, Taiwan
+Ivor Loncaric, Rudjer Boskovic Institute, Croatia
+Yun Wang, Griffith University, Australia
+Qingjie Li, MIT, USA
+--
