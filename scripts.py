@@ -1,6 +1,7 @@
 import json
 import glob
 import os
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -177,6 +178,18 @@ def plot_setup(fig, axs, log=True, lim=True,
     plt.show()
 
 
+def find_project_root(target="CECAM_LATTE"):
+    cwd = Path.cwd()
+
+    for parent in [cwd] + list(cwd.parents):
+        if parent.name == target:
+            return parent
+            
+    for p in cwd.rglob(target):
+        if p.is_dir():
+            return p
+
+    raise RuntimeError(f"{target} not found anywhere")
 
 # p = '/leonardo/pudb/userexternal/mtaleblo/Carbon_trainings/1_similar_dataset/ID_test/'
 # f = 'epoch_250_step_250000_forces.dat'
