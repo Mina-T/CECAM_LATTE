@@ -29,6 +29,7 @@ src/panna/interfaces/ASE_example.py
 src/panna/interfaces/__init__.py
 src/panna/interfaces/jaxMD.py
 src/panna/interfaces/jax_ASE.py
+src/panna/interfaces/phonon_utils.py
 src/panna/jax/MLP_jax.py
 src/panna/jax/__init__.py
 src/panna/jax/data_jax.py

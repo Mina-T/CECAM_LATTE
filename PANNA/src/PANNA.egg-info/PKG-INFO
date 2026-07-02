@@ -22,6 +22,7 @@ Requires-Dist: optax
 Requires-Dist: ase
 Requires-Dist: pandas
 Requires-Dist: matplotlib
+Requires-Dist: ipympl
 Dynamic: classifier
 Dynamic: description
 Dynamic: description-content-type

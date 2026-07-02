@@ -1,0 +1,10 @@
+diamond
+3.57 	! lattice parameter a
+	0.0 0.5 0.5 	! basis vector a1
+	0.5 0.0 0.5 	! basis vector a2
+	0.5 0.5 0.0 	! basis vector a3
+C masses = 12.011
+  2
+Direct
+ 0.0 0.0 0.0 C
+ 0.25 0.25 0.25 C

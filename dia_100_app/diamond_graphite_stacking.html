@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; background:#ffffff; color:#1a1a1a; padding: 16px; }
+  .th { font-size:14px; font-weight:500; fill:#1a1a1a; }
+  .ts { font-size:12px; fill:#5f5e5a; }
+  .dvg-btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .dvg-btn{padding:8px 14px;border-radius:8px;border:1px solid #ccc;background:#ffffff;color:#1a1a1a;font-size:13px;cursor:pointer}
+  .dvg-btn.active{background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+  .dvg-seq{margin-top:14px;font-size:13px;font-weight:600;color:#185FA5}
+  .dvg-caption{margin-top:6px;font-size:13px;color:#5f5e5a;line-height:1.7;max-width:640px}
+  #layerB,#layerC,#graphiteHi,#svB,#svConnAB,#svDiamond,#svGraphite{transition:opacity .3s ease}
+</style>
+</head>
+<body>
+
+<svg width="680" height="300" viewBox="0 0 680 300" role="img" aria-label="Dual top-down and side view of diamond versus graphite layer stacking">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<text class="th" x="170" y="50" text-anchor="middle">Looking down</text>
+<text class="th" x="480" y="50" text-anchor="middle">Looking from the side</text>
+<line x1="340" y1="40" x2="340" y2="290" stroke="#e0ddd5" stroke-width="0.5"/>
+
+<g id="layerA">
+<circle cx="220" cy="170" r="12" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<circle cx="195" cy="127" r="12" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<circle cx="145" cy="127" r="12" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<circle cx="120" cy="170" r="12" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<circle cx="145" cy="213" r="12" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<circle cx="195" cy="213" r="12" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<circle cx="170" cy="170" r="12" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<text x="170" y="170" text-anchor="middle" dominant-baseline="central" class="th" style="fill:#042C53">A</text>
+</g>
+<g id="layerB" style="opacity:0">
+<circle cx="195" cy="156" r="8" fill="#378ADD" stroke="#042C53" stroke-width="1"/>
+<circle cx="145" cy="156" r="8" fill="#378ADD" stroke="#042C53" stroke-width="1"/>
+<circle cx="170" cy="199" r="8" fill="#378ADD" stroke="#042C53" stroke-width="1"/>
+<text x="195" y="156" text-anchor="middle" dominant-baseline="central" class="ts" style="fill:#E6F1FB">B</text>
+<text x="145" y="156" text-anchor="middle" dominant-baseline="central" class="ts" style="fill:#E6F1FB">B</text>
+<text x="170" y="199" text-anchor="middle" dominant-baseline="central" class="ts" style="fill:#E6F1FB">B</text>
+</g>
+<g id="layerC" style="opacity:0">
+<circle cx="170" cy="141" r="8" fill="#0C447C" stroke="#042C53" stroke-width="1"/>
+<circle cx="145" cy="185" r="8" fill="#0C447C" stroke="#042C53" stroke-width="1"/>
+<circle cx="195" cy="185" r="8" fill="#0C447C" stroke="#042C53" stroke-width="1"/>
+<text x="170" y="141" text-anchor="middle" dominant-baseline="central" class="ts" style="fill:#E6F1FB">C</text>
+<text x="145" y="185" text-anchor="middle" dominant-baseline="central" class="ts" style="fill:#E6F1FB">C</text>
+<text x="195" y="185" text-anchor="middle" dominant-baseline="central" class="ts" style="fill:#E6F1FB">C</text>
+</g>
+<g id="graphiteHi" style="opacity:0">
+<circle cx="220" cy="170" r="15" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="195" cy="127" r="15" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="145" cy="127" r="15" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="120" cy="170" r="15" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="145" cy="213" r="15" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="195" cy="213" r="15" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="170" cy="170" r="15" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2"/>
+</g>
+
+<line x1="375" y1="205" x2="585" y2="205" stroke="#e0ddd5" stroke-width="0.5"/>
+<rect x="375" y="179" width="90" height="22" rx="6" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<text x="420" y="190" text-anchor="middle" dominant-baseline="central" class="th" style="fill:#042C53">A</text>
+
+<g id="svConnAB" style="opacity:0">
+<line x1="385" y1="179" x2="445" y2="161" stroke="#0C447C" stroke-width="1.5"/>
+<line x1="455" y1="179" x2="515" y2="161" stroke="#0C447C" stroke-width="1.5"/>
+</g>
+<g id="svB" style="opacity:0">
+<rect x="435" y="139" width="90" height="22" rx="6" fill="#378ADD" stroke="#042C53" stroke-width="1"/>
+<text x="480" y="150" text-anchor="middle" dominant-baseline="central" class="th" style="fill:#E6F1FB">B</text>
+</g>
+<g id="svDiamond" style="opacity:0">
+<line x1="445" y1="139" x2="505" y2="121" stroke="#0C447C" stroke-width="1.5"/>
+<line x1="515" y1="139" x2="575" y2="121" stroke="#0C447C" stroke-width="1.5"/>
+<rect x="495" y="99" width="90" height="22" rx="6" fill="#0C447C" stroke="#042C53" stroke-width="1"/>
+<text x="540" y="110" text-anchor="middle" dominant-baseline="central" class="th" style="fill:#E6F1FB">C</text>
+</g>
+<g id="svGraphite" style="opacity:0">
+<line x1="450" y1="139" x2="450" y2="109" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3 2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="460" y="124" class="ts">weak gap</text>
+<rect x="375" y="87" width="90" height="22" rx="6" fill="#F5C4B3" stroke="#4A1B0C" stroke-width="1"/>
+<text x="420" y="98" text-anchor="middle" dominant-baseline="central" class="th" style="fill:#4A1B0C">A</text>
+<text x="470" y="98" class="ts">repeats A</text>
+</g>
+
+<text class="ts" x="420" y="215" text-anchor="middle">A site</text>
+<text class="ts" x="480" y="215" text-anchor="middle">B site</text>
+<text class="ts" x="540" y="215" text-anchor="middle">C site</text>
+
+<circle cx="120" cy="270" r="6" fill="#B5D4F4" stroke="#0C447C" stroke-width="1"/>
+<text x="135" y="270" dominant-baseline="central" class="ts">Layer A</text>
+<circle cx="220" cy="270" r="6" fill="#378ADD" stroke="#042C53" stroke-width="1"/>
+<text x="235" y="270" dominant-baseline="central" class="ts">Layer B</text>
+<circle cx="320" cy="270" r="6" fill="#0C447C" stroke="#042C53" stroke-width="1"/>
+<text x="335" y="270" dominant-baseline="central" class="ts">Layer C (diamond)</text>
+<circle cx="480" cy="270" r="6" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="2 2"/>
+<text x="495" y="270" dominant-baseline="central" class="ts">Back to A (graphite)</text>
+</svg>
+
+<div class="dvg-btns">
+<button class="dvg-btn active" data-step="1" onclick="dvgSet(1)">1. Layer A</button>
+<button class="dvg-btn" data-step="2" onclick="dvgSet(2)">2. + Layer B</button>
+<button class="dvg-btn" data-step="3" onclick="dvgSet(3)">3. + Layer C (diamond)</button>
+<button class="dvg-btn" data-step="4" onclick="dvgSet(4)">4. Graphite instead</button>
+</div>
+<div class="dvg-seq" id="dvgSeq">Sequence so far: A</div>
+<div class="dvg-caption" id="dvgCaption">Top view: layer A's triangular arrangement creates two different sets of gaps. Side view: layer A sits at the base.</div>
+
+<script>
+function dvgSet(step){
+  document.querySelectorAll(".dvg-btn").forEach(function(b){ b.classList.toggle("active", +b.dataset.step===step); });
+  document.getElementById("layerB").style.opacity = step>=2 ? 1 : 0;
+  document.getElementById("layerC").style.opacity = step===3 ? 1 : 0;
+  document.getElementById("graphiteHi").style.opacity = step===4 ? 1 : 0;
+  document.getElementById("svB").style.opacity = step>=2 ? 1 : 0;
+  document.getElementById("svConnAB").style.opacity = step>=2 ? 1 : 0;
+  document.getElementById("svDiamond").style.opacity = step===3 ? 1 : 0;
+  document.getElementById("svGraphite").style.opacity = step===4 ? 1 : 0;
+  var seqs = {
+    1: "Sequence so far: A",
+    2: "Sequence so far: A \u2192 B",
+    3: "Sequence so far: A \u2192 B \u2192 C, then repeats \u21BB",
+    4: "Sequence so far: A \u2192 B \u2192 A, then repeats \u21BB"
+  };
+  var captions = {
+    1: "Top view: layer A's triangular arrangement creates two different sets of gaps. Side view: layer A sits at the base.",
+    2: "Top view: layer B nests into one gap set. Side view: layer B stacks directly above, covalently bonded to A.",
+    3: "Top view: layer C nests into the OTHER gap set - a brand new position. Side view: C bonds covalently on top of B. This is diamond's stacking: A-B-C-A-B-C...",
+    4: "Graphite instead: the 3rd layer skips position C and drops back onto A's spot. Notice the bigger gap in the side view - no covalent bond, just weak van der Waals attraction. This is graphite's stacking: A-B-A-B..."
+  };
+  document.getElementById("dvgSeq").textContent = seqs[step];
+  document.getElementById("dvgCaption").textContent = captions[step];
+}
+</script>
+</body>
+</html>

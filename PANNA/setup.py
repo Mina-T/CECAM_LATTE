@@ -12,7 +12,7 @@ setup(
     long_description_content_type="text/markdown",
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
-    install_requires=['numpy', 'mendeleev', 'scipy', 'tensorflow>=2', 'jax', 'dm-haiku', 'optax', 'ase', 'pandas','matplotlib'],
+    install_requires=['numpy', 'mendeleev', 'scipy', 'tensorflow>=2', 'jax', 'dm-haiku', 'optax', 'ase', 'pandas', 'matplotlib', 'ipympl'],
     #extras_require={
     #    "TF": ['tensorflow>=2'],
     #    "JAX": ['tensorflow-cpu', 'jax[cuda12]', 'dm-haiku', 'optax'],

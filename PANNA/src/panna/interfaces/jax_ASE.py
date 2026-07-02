@@ -43,7 +43,8 @@ class PANNAJAXCalculator(Calculator):
         model = hk.without_apply_rng(hk.transform(raw_model))
         self.modapp = jax.jit(model.apply)
         
-        wfolder = parameters['train_dir']+'/models/'
+        # wfolder = parameters['train_dir']+'/models/'
+        wfolder = os.path.dirname(config)+'/models/'
         if weights_file == -1:
             last_file = max(
             (f for f in os.listdir(wfolder) if f.startswith("epoch_")),
